@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -14,8 +15,9 @@ import java.util.UUID;
 public class UploadController {
 
 
-    private static final String filePath = "/Users/cyh/Documents/classpro/images/";
 
+    @Value("${web.file.path}")
+    private String filePath;
 
     @RequestMapping("upload")
     public Object Upload(@RequestParam("fileMame") MultipartFile upFile, HttpServletRequest request) {
